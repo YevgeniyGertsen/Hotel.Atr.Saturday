@@ -1,4 +1,15 @@
-﻿<!-- Google Map Area Start -->
+﻿@model Message
+
+@{
+    ViewData["Title"] = "Contact";
+    ViewData["Descripton"] = "A quality room of hotel ATR with sea or mountain view";
+    ViewData["Keywords"] = "quality, room, hotel, ATR";
+
+    ViewData["PageName"] = "Contact Us";
+    ViewData["PageDescription"] = "A quality room of hotel ATR with sea or mountain view";
+}
+
+<!-- Google Map Area Start -->
 <div class="google-map-area">
     <!--  Map Section -->
     <div id="contacts" class="map-area">
@@ -33,21 +44,25 @@
             </div>
             <div class="col-md-8">
                 <h4 class="contact-title">send your massage</h4>
-                <form id="contact-form" action="https://d29u17ylf1ylz9.cloudfront.net/hotel-atr/mail.php" method="post">
+                <form id="contact-form" 
+                      asp-action="Contact"
+                      asp-controller="Home"
+                      method="post">
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" name="name" placeholder="Enter Name">
+                            <input type="text" asp-for="name" placeholder="Enter Name">
                         </div>
                         <div class="col-md-6">
-                            <input type="email" name="email" placeholder="Enter Email">
+                            <input type="text" asp-for="email" placeholder="Enter Email">
                         </div>
                         <div class="col-md-12">
-                            <textarea name="message" cols="30" rows="10" placeholder="Message here"></textarea>
+                            <textarea asp-for="message" cols="30" rows="10" placeholder="Message here"></textarea>
                             <button type="submit" class="default-btn">SUBMIT</button>
                         </div>
                     </div>
                 </form>
-                <p class="form-messege"></p>
+                @* <p class="form-messege"></p> *@
+                <div asp-validation-summary="All" class="form-messege"></div>
             </div>
         </div>
     </div>

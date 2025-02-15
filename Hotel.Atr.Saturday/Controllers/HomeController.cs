@@ -1,4 +1,4 @@
-using Hotel.Atr.Saturday.Models;
+﻿using Hotel.Atr.Saturday.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -18,14 +18,29 @@ namespace Hotel.Atr.Saturday.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Contact()
         {
             return View();
         }
 
-        public IActionResult TestPage()
+        [HttpPost]
+        //public IActionResult Contact(string name, string email, string message)
+        public IActionResult Contact(Message usermessage)
         {
-            return View();
+            //if(string.IsNullOrWhiteSpace(usermessage.name))
+            //{
+            //    ModelState.AddModelError("name", "Поле обязательно для заполнения");
+            //}
+
+            if(ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                return View("Contact", usermessage);
+            }
         }
     }
 }
